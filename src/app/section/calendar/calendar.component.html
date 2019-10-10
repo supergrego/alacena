@@ -1,0 +1,24 @@
+<table cellpadding="0" cellpading="0" class="hola">
+    <thead>
+      <th>Fecha</th>
+      <th>Día</th>
+      <th>Plato 1</th>
+      <th>Plato 2</th>
+      <th>Plato 3</th>
+      <th>Plato 4</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let day of calendar">
+          <td>{{day.date}}</td>
+          <td>{{day.day}}</td>
+          <td *ngIf="day.dish1">{{day.dish1}}</td>
+          <td *ngIf="day.dish1">{{day.dish2}}</td>
+          <td *ngIf="day.dish1">{{day.dish3}}</td>
+          <td *ngIf="day.dish1">{{day.dish4}}</td>
+          <td colspan=4 *ngIf="day.blankDay" class="blankday">
+              <i [ngClass]="['material-icons ico-' + (user?.roles.admin ? 'ok' : 'cancel')]" (click)="deleteBlankDay(day.id)" matTooltip="Eliminar">delete</i>
+            {{day.blankDay}}
+          </td>
+        </tr>
+    </tbody>
+  </table>

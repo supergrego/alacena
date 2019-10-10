@@ -1,0 +1,31 @@
+<div>
+    <img [src]="data.photoUrl" class="avatar">
+    <h2 mat-dialog-title>FOOD-COIN <span [class]="data.amount < 0 ? 'reintegro' : ''">[{{data.amount.toFixed(2)}} €]</span></h2>
+    <mat-dialog-content class="content">
+    <form [formGroup]="foodCoin">
+      <mat-form-field>
+        <input matInput type="number" placeholder="" formControlName="delivered" min="-100" max="100" required>
+        <mat-label><b> Cantidad entregada</b></mat-label>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="" formControlName="amount" min="-100" max="100" required>
+        <mat-label><b> Cantidad a pagar</b></mat-label>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input matInput type="number" placeholder="" formControlName="returned" readonly>
+        <mat-label><b> Devolución</b></mat-label>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="string" placeholder="" formControlName="comment">
+        <mat-label><b> Comentario</b></mat-label>
+      </mat-form-field>
+    </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button *ngIf="isDesktop" mat-raised-button color="primary" (click)="onCloseSave()">Guardar</button>
+      <button *ngIf="!isDesktop" mat-raised-button color="primary" (click)="onCloseSave()">Ingreso</button>
+      <button *ngIf="!isDesktop" mat-raised-button color="warn" (click)="onCloseReintegro()">Reintegro</button>
+      <button mat-raised-button (click)="onCloseExit()">Salir</button>
+    </mat-dialog-actions>
+  </div>

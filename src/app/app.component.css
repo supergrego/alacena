@@ -1,0 +1,22 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .card{
+    min-width: 50%;
+  }
+
+  .small{
+    display: none;
+  }
+
+  @media only screen and (max-width: 550px) {
+    .big{
+      display: none;
+    }
+
+    .small{
+      display: inherit;
+    }
+  }
+  

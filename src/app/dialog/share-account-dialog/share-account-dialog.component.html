@@ -1,0 +1,18 @@
+<div>
+    <h2 mat-dialog-title>COMPARTIR FOOD-COIN</h2>
+    <mat-dialog-content class="content">
+      <div>El importe de las cuentas se unificarán en una única cuenta compartida.</div>
+      <mat-form-field class="dish-select">
+        <mat-select placeholder="Usuario" [(value)] = "selectedUser">
+          <mat-option *ngFor="let user of data.list" [value]="user.email">
+            <img [src]="user.photoUrl" class="avatar">
+            <div class="inline"> {{ user.displayName }} </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-raised-button color="primary" (click)="onCloseSave()">Guardar</button>
+      <button mat-raised-button color="primary" (click)="onCloseExit()">Salir</button>
+    </mat-dialog-actions>
+  </div>

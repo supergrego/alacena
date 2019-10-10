@@ -1,0 +1,19 @@
+.content{
+    height: 90px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .avatar {
+    width: 24px;
+    border-radius: 50%;
+  }
+
+  .inline {
+    display: inline;
+  }
+
+  button {
+    line-height: 25px;
+    padding: 0 10px;
+    min-width: 0px;
+  }

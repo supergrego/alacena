@@ -1,0 +1,106 @@
+<mat-card class="example-card" flex="40" flex-sm="80">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image" *ngIf="status > 0 else notCalled">
+        <img *ngIf="caller" [src]="caller.photoUrl" class="callerPhoto">
+      </div>
+      <mat-card-title class="card-title">Estado:</mat-card-title>
+      <mat-card-subtitle> {{ statusDesc }} </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+          <mat-tab label="Pedidos">
+              <table cellpadding="0" cellpading="0" class="hola">
+                <thead>
+                  <tr>
+                  <th>Nombre</th>
+                  <th>Pedido</th>
+                  <th>Importe</th>
+                  <th>Estado</th>
+                  <th>Acción</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr [ngClass]="[(order.confirmed ? 'row-confirmed' : '')]" *ngFor="let order of orderList">
+                    <td data-title="Nombre">
+                      <img [src]="order.userl.photoUrl" class="avatar">
+                      <div class="display-name"> {{order.userl.displayName}} </div>
+                    </td>
+                    <td data-title="Pedido">
+                     <i *ngIf="order?.userl.roles.firstFloor" class="material-icons ico-first">transit_enterexit</i>
+                     <span [ngClass]="order?.userl.roles.firstFloor ? 'margl' : ''" >{{order.dish}} {{order.garrison ? "(" + order.garrison + ")": ""}}</span>
+                    </td>
+                    <td data-title="Importe">
+                      <div style="text-align: right; padding-right: 5px;">{{order.price.toFixed(2)}} €</div>
+                    </td>
+                    <td data-title="Estado">
+                        <i [ngClass]="['material-icons ico-' + (order.confirmed ? 'ok' : 'cancel')]">phone</i>
+                        <i [ngClass]="['material-icons ico-' + (order.paid ? (order?.userl.amount >= 0 ? 'ok' : 'moroso') : 'cancel')]" [matTooltip]="(order.paid && order?.userl.amount < 0 ? 'Moroso' : '')">euro_symbol</i>
+                    </td>
+                    <td data-title="Acción">
+                        <i [ngClass]="['material-icons btn-ico-' + ((loggedUser?.roles.admin || (order?.userl?.email==loggedUser?.email && !order?.confirmed)) ? 'on' : 'off')]" (click)="onDeleteOrder(order)">delete</i>
+                        <i [ngClass]="['material-icons btn-ico-' + (((loggedUser?.roles.admin || loggedUser?.roles.caller || order?.userl?.email==loggedUser?.email) && (!order?.confirmed && status > 0))  ? 'on' : 'off')]" (click)="onCalledClick(order)">perm_phone_msg</i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+          </mat-tab>
+          <mat-tab *ngIf="loggedUser && (loggedUser?.roles.admin || loggedUser?.roles.accountant)" label="Usuarios">
+            <table cellpadding="0" cellpading="0" class="hola">
+              <thead>
+                <th>Usuario</th>
+                <th>Saldo</th>
+                <th>Roles</th>
+                <th>Acción</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of userList async">
+                  <td data-title="Usuario">
+                    <img [src]="user.photoUrl" class="avatar">
+                    <div class="display-name"> {{user.displayName}} </div>
+                  </td>
+                  <td data-title="Saldo">
+                    <div style="text-align: right; padding-right: 5px;">{{user.amount.toFixed(2)}} €</div>
+                  </td>
+                  <td data-title="Roles">
+                      <i *ngIf="user?.roles.firstFloor" class="material-icons ico-ok floor" matTooltip="Primera planta">looks_ones</i>
+                      <i *ngIf="!(user?.roles.firstFloor)" class="material-icons ico-ok floor" matTooltip="Cuarta planta">looks_4</i>
+                      <i [ngClass]="['material-icons ico-' + (user?.roles.admin ? 'ok' : 'cancel')]" matTooltip="Administrador">account_box</i>
+                      <i [ngClass]="['material-icons ico-' + (user?.roles.caller ? 'ok' : 'cancel')]" matTooltip="Realizar pedido">contact_phone</i>
+                      <i [ngClass]="['material-icons ico-' + (user?.roles.accountant ? 'ok' : 'cancel')]" matTooltip="Administrar food-coin">account_balance</i>
+                      <i [ngClass]="['material-icons ico-' + (user?.shared ? 'ok' : 'cancel')]" matTooltip="Comparte food-coin">supervisor_account</i>
+                  </td>
+                  <td data-title="Acción">
+                      <i [ngClass]="['material-icons btn-ico-' + ((loggedUser?.roles.admin && !user?.shared) ? 'on' : 'off')]" (click)="onShareClick(user)">call_merge</i>
+                      <i [ngClass]="['material-icons btn-ico-' + ((loggedUser?.roles.admin && user?.shared) ? 'on' : 'off')]" (click)="onSplitClick(user)">call_split</i>
+                      <i [ngClass]="['material-icons btn-ico-' + ((loggedUser?.roles.admin || loggedUser?.roles?.accountant) ? 'on' : 'off')]" (click)="onMoneyClick(user)">euro_symbol</i>
+                      <i [ngClass]="['material-icons btn-ico-' + ((loggedUser?.roles.admin) ? 'on' : 'off')]" (click)="onRolesClick(user)">vpn_key</i>
+                      <i [ngClass]="['material-icons btn-ico-' + ((loggedUser?.roles.admin || loggedUser?.email == user?.email) ? 'on' : 'off')]" (click)="onLogClick(user)">description</i>
+                      <i *ngIf="loggedUser?.email ==user?.email && user?.roles.admin" [ngClass]="['material-icons btn-ico-on']" (click)="onCalendarClick(user)">date_range</i>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <th></th>
+                <th style="text-align: right; padding-right: 5px;">{{bankAmount.toFixed(2)}} €</th>
+                <th style="text-align: right; padding-right: 5px; background-color: darkred">Deuda: {{debt.toFixed(2)}} €</th>
+                <th></th>
+              </tfoot>
+            </table>
+          </mat-tab>
+          <mat-tab label="Calendario">
+            <app-calendar></app-calendar>
+          </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="!(loggedUser?.roles?.admin || loggedUser?.roles?.caller) || status > 0" (click)="onCallClick()">LLAMAR</button>
+      <button *ngIf="(loggedUser?.roles?.admin || loggedUser?.roles?.caller)"  mat-raised-button color="primary" [disabled]="!(loggedUser?.roles?.admin || loggedUser?.roles?.caller)" (click)="onSummary()">RESUMEN</button>
+      <button *ngIf="(loggedUser?.roles?.admin || loggedUser?.roles?.firstFloor)"  mat-raised-button color="primary" [disabled]="!(loggedUser?.roles?.admin || loggedUser?.roles?.firstFloor)" (click)="onFirstFloor()" style="margin: 0;">Platos 1ª planta</button>
+      <div class="price-box">Total: <strong>{{totalPrice.toFixed(2)}} €</strong></div>
+    </mat-card-actions>
+  </mat-card>
+  <ng-template #notCalled>
+    <div mat-card-avatar class="example-header-image">
+      <div class="day-number">A</div>
+    </div>
+  </ng-template>

@@ -1,0 +1,25 @@
+.login-content{
+    display: flex;   
+}
+.imgpadding{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 50%;
+}
+
+.ico-btn{
+  cursor: pointer
+}
+
+.user-name {
+  font-size: 14px;
+  white-space: normal;
+  line-height: 1;
+}
+
+  @media only screen and (max-width: 550px) {
+    .big{
+      display: none;
+    }
+  }
+  

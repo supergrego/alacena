@@ -1,0 +1,103 @@
+<mat-card class="example-card" flex="40" flex-sm="80">
+    <div *ngIf="setup.alert!=''" class="flex-wrap">
+        <div class="warn">
+            <i [class]="['material-icons warn-ico']">warning</i>
+          <div class="warn-text">{{setup.alert}}</div>
+        </div>
+    </div>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"><div class="day-number">{{setup.day}}</div></div>
+      <mat-card-title class="card-title"> {{ setup.spanishDate }} </mat-card-title>
+      <mat-card-subtitle>Platos del día:</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="message">
+          <div class="dish message">{{message}}</div>
+      </div>
+      <div *ngIf="!message" class="flex-wrap">
+        <div class="dish" *ngFor="let dish of dailyDishes;">{{dish.dish}}</div>
+      </div>
+      <div class="flex-wrap-left" style="padding-bottom: 5px">
+        <div class="price-box pedido"><!-- span class="hide-small"-->Mi pedido: <!--/span--><strong>{{orderPrice.toFixed(2)}} €</strong></div>
+        <div [class]="myBalanceCls"><!--span class="hide-small"-->Mi saldo: <!--/span--><strong>{{ myBalance.toFixed(2) }} €</strong></div>
+        <i [class]="['material-icons btn-ico-' + ((user) ? 'on' : 'off')]" matTooltip="Consultar log" (click)="onLogClick()">description</i>
+        <app-slow-payer class="slowpayer"></app-slow-payer>
+      </div>
+      <mat-tab-group (selectedTabChange)="onTabClick($event)">
+          <mat-tab label="Plato del día">
+            <div class="form">
+              <mat-form-field class="dish-select">
+                  <mat-select placeholder="Seleccione plato" (selectionChange)="dishSelected($event)" [(value)]="selDish">
+                    <mat-option *ngFor="let dish of dailyDishesCombo" [value]="dish.id">
+                      {{ dish.dish }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="garrison"  class="dish-select">
+                    <mat-select placeholder="Guarnición" (selectionChange)="garrisonSelected($event)" [(value)]="selGarrison">
+                      <mat-option *ngFor="let item of garrisonList async" [value]="item.plate">
+                        {{ item.plate }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+          </mat-tab>
+          <mat-tab label="Raciones">
+              <div class="form">
+                  <mat-form-field class="dish-select">
+                      <mat-select placeholder="Seleccione ración" (selectionChange)="plateSelected($event)" [(value)]="selPlate">
+                        <mat-option *ngFor="let plate of plateList async" [value]="plate.id">
+                          {{ plate.plate }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field *ngIf="garrison"  class="dish-select">
+                        <mat-select placeholder="Guarnición" (selectionChange)="garrisonSelected($event)" [(value)]="selGarrison">
+                          <mat-option *ngFor="let item of garrisonList async" [value]="item.plate">
+                            {{ item.plate }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+                  <mat-radio-group class="radio-group" (change)="plateTypeChanged($event)" [value]="plateType">
+                      <mat-radio-button class="radio-button" value="1">Plato combinado</mat-radio-button>
+                      <mat-radio-button class="radio-button" value="2">Media ración</mat-radio-button>
+                      <mat-radio-button class="radio-button" value="3">Ración completa / Otro platos</mat-radio-button>
+                    </mat-radio-group>
+          </mat-tab>
+          <mat-tab label="Bocadillos">
+              <div class="form">
+                <mat-form-field class="dish-select">
+                  <mat-select placeholder="Seleccione bocadillo" (selectionChange)="sandwichSelected($event)" [(value)]="selSanwich">
+                    <mat-option *ngFor="let sandwich of sandwichList" [value]="sandwich.id">
+                      {{ sandwich.sandwich }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+          </mat-tab>
+          <mat-tab label="Postres">
+            <div class="form">
+              <mat-form-field class="dish-select">
+                <mat-select placeholder="Seleccione postre" (selectionChange)="dessertSelected($event)" [(value)]="selDessert">
+                  <mat-option *ngFor="let dessert of dessertList" [value]="dessert.id">
+                    {{ dessert.dessert }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+        <button mat-raised-button color="primary" [disabled]="!enableOrder  || this.user == undefined" (click)="addOrder()">PEDIR</button>
+        <div class="price-box">Precio: <strong>{{singlePrice}} €</strong></div><br/>
+        <mat-form-field *ngIf="(user?.roles?.admin)" class="on-behalf-of-select">
+          <mat-select placeholder="Pedir para otro usuario" [(value)] = "onBehalfOfUser">
+            <mat-option *ngFor="let user of userList" [value]="user.email">
+              <img [src]="user.photo" class="avatar">
+              <div class="inline"> {{ user.name }} </div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <i *ngIf="user?.roles?.admin" class="material-icons cancel-ico" matTooltip="Limpiar" (click)="clearOnBehalfOf()">cancel</i>
+    </mat-card-content>
+  </mat-card>

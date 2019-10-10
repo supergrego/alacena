@@ -1,0 +1,20 @@
+.content{
+    height: 120px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+  }
+
+  h2 {
+    margin: -11px 0 2px;
+    font-size: 17px;
+  }
+
+  .reintegro{
+    color: rgb(212, 0, 0);
+  }
+
+  button {
+    line-height: 25px;
+    padding: 0 10px;
+    min-width: 0px;
+  }

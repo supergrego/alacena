@@ -1,0 +1,117 @@
+.hidden{
+    display: none;
+}
+
+.scrolling {
+    overflow: hidden;
+    position: relative;
+    background-color: mistyrose;
+    border: solid 2px #f5c0ba;
+    border-radius: 5px;
+    width: 300px;
+    height: 32px;
+    margin-top: -3px;
+   }
+   .scrolling h3 {
+    margin-top: -7px !important;
+    font-size: 14px;
+    position: absolute;
+    white-space: nowrap;
+    margin: 0;
+    text-align: center;
+    z-index: 3;
+    /* Starting position */
+    -moz-transform:translateX(100%);
+    -webkit-transform:translateX(100%);	
+    transform:translateX(100%);
+    /* Apply animation to this element */	
+    -moz-animation: scrolling 60s linear infinite;
+    -webkit-animation: scrolling 60s linear infinite;
+    animation: scrolling 60s linear infinite;
+   }
+   /* Move it (define the animation) */
+   @-moz-keyframes scrolling {
+    0%   { -moz-transform: translateX(100%); }
+    100% { -moz-transform: translateX(-100%); }
+   }
+   @-webkit-keyframes scrolling {
+    0%   { -webkit-transform: translateX(100%); }
+    100% { -webkit-transform: translateX(-100%); }
+   }
+   @keyframes scrolling {
+    0%   { 
+    -moz-transform: translateX(100%); /* Firefox bug fix */
+    -webkit-transform: translateX(100%); /* Firefox bug fix */
+    transform: translateX(100%); 		
+    }
+    100% { 
+    -moz-transform: translateX(-100%); /* Firefox bug fix */
+    -webkit-transform: translateX(-100%); /* Firefox bug fix */
+    transform: translateX(-100%); 
+    }
+   }
+
+.backgroundlabel{
+    position: absolute;
+    color: #fff9f8;
+    text-align: center;
+    width: 300px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.zidx{
+    z-index: 2;
+}
+
+.avatar {
+    width: 28px;
+    border-radius: 50%;
+    margin-top: -5px;
+    position: absolute;
+}
+
+.marquee {
+    background-color: mistyrose;
+    width: 300px;
+    border-radius: 5px;
+    border: 2px solid;
+    height: 32px;
+    border-color: #ffb1a8;
+}
+
+.content{
+    margin-top: -7px;
+}
+
+.marquee li {
+    text-decoration: none;
+    display: inline;
+}
+
+.marquee p {
+    display: inline;
+    margin-left: 35px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.marquee p span {
+    color: red;
+}
+
+.scrolling h3 li {
+    text-decoration: none;
+    display: inline;
+}
+
+.scrolling h3 p  {
+    display: inline;
+    margin-left: 35px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.scrolling h3 p span {
+    color: red;
+}

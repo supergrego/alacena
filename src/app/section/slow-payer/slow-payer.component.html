@@ -1,0 +1,31 @@
+<div [class]="showComponent">
+  <div [class]="browser==='chrome' ? 'backgroundlabel' : 'backgroundlabel zidx'">MOROSOS</div>
+  <!-- div class="backgroundlabel zidx">MOROSOS</div -->
+  <marquee *ngIf="browser==='chrome'" class="marquee" scrollamount="3">
+    <div class="content">
+      <ul>
+        <li *ngFor="let slowPayer of slowPayers">
+          <img [src]="slowPayer.photo" class="avatar"/>
+          <p>
+            {{ slowPayer.name }}
+            <span>[{{ slowPayer.amount }} €]</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </marquee>
+  <div *ngIf="browser!=='chrome'" class="scrolling">
+  <!-- div class="scrolling"-->
+      <h3>
+          <ul>
+              <li *ngFor="let slowPayer of slowPayers">
+                <img [src]="slowPayer.photo" class="avatar"/>
+                <p>
+                  {{ slowPayer.name }}
+                  <span>[{{ slowPayer.amount }} €]</span>
+                </p>
+              </li>
+            </ul>
+      </h3>
+      </div>
+  </div>

@@ -1,0 +1,23 @@
+.content{
+    height: 160px;
+  }
+
+  h2{
+    padding-left: 33px;
+  }
+
+  .avatar {
+    position: absolute;
+    width: 30px;
+    border-radius: 50%;
+  }
+
+  .reintegro {
+    color: red;
+  }
+
+  button {
+    line-height: 25px;
+    padding: 0 10px;
+    min-width: 0px;
+  }

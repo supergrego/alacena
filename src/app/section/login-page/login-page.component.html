@@ -1,0 +1,7 @@
+<mat-toolbar-row *ngIf="user else boton">
+  <span class="big user-name"> {{user.displayName}} </span> <img class="imgpadding" [src]="user.photoUrl" width="50px"/>
+  <i class="material-icons ico-btn" matTooltip="Salir" (click)="logout()">exit_to_app</i>
+</mat-toolbar-row>
+<ng-template #boton>
+    <i class="material-icons ico-btn" matTooltip="Entrar" (click)="login()">account_box</i>
+</ng-template>

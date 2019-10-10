@@ -1,0 +1,17 @@
+<div>
+    <h2 mat-dialog-title>{{title}}</h2>
+    <mat-dialog-content class="content">
+      <div *ngIf="!readonly" ><strong>Teléfono:</strong> 958 81 28 35</div>
+      <ul>
+        <li *ngFor="let order of data.list async">
+          <strong>{{order.count}}</strong> {{order.description}}
+        </li>
+      </ul>
+      <div>({{data.total}} cosas)</div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button *ngIf="!readonly"  mat-raised-button color="primary" (click)="onCloseSave()">Confirmar</button>
+      <button mat-raised-button color="primary" (click)="onCloseExit()">Salir</button>
+      <button mat-raised-button color="primary" (click)="copyClipboard()">Copiar</button>
+    </mat-dialog-actions>
+  </div>

@@ -1,0 +1,190 @@
+  .example-header-image {
+    color: lightskyblue;
+    font-size: 26px;
+    text-align: center;
+    font-weight: bold;
+    border: 4px solid lightskyblue;
+    margin-top: -4px;
+    margin-right: -4px;
+  }
+
+  .card-title{
+    color:#777777;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .message {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .flex-wrap {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .flex-wrap-left {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    text-align: center;
+  }
+
+  .dish {
+    border-radius: 7px;
+    padding: 4px 10px 3px 10px;
+    margin: 0px 5px 6px 0px;
+    background-color: lightgoldenrodyellow;
+    border: 2px solid yellowgreen;
+    min-width: 220px;
+  }
+
+  .day-number {
+    width: 40px;
+    padding-top: 5px;
+  }
+
+  .form{
+      padding-top: 30px;
+  }
+
+  .dish-select{
+      width: 300px;
+      padding-right: 15px;
+  }
+
+  .select-obo{
+    width: 300px;
+    padding-left: 15px;
+}
+
+  .radio-group {
+    display: inline-flex;
+    flex-direction: column;
+    padding-right: 15px;
+    padding-bottom: 10px;
+  }
+  
+  .radio-button {
+    margin: 5px;
+  }
+
+  .price-box{
+    display: inline;
+    margin-left: 10px;
+    border: 2px solid #ccf3ff;
+    background-color: #edfbff;
+    border-radius: 4px;
+    padding: 8px;
+  }
+
+  .pedido{
+    font-size: 14px;
+    height: 16px;
+    white-space: nowrap;
+  }
+
+  .moroso{
+    border: 2px solid #ffcccc;
+    background-color: #ffeded;
+  }
+
+  .nomoroso{
+    border: 2px solid #ceffcc;
+    background-color: #f2ffed;
+  }
+
+  .almostmoroso{
+    border: 2px solid #ffdfcc;
+    background-color: #fffaed;
+  }
+
+  .btn-ico-on{
+    cursor: pointer;
+    font-size: 26px;
+    color: #5b74ff;
+    border: 2px solid #5b74ff;
+    border-radius: 4px;
+    padding: 3px;
+    margin-left: 8px;
+    background-color: #dff0fa;
+  }
+
+  .btn-ico-on:hover {
+    color: #3251ff;
+    border-color: #3251ff;
+    background-color: #cee8f7;
+  }
+
+  .btn-ico-off{
+    border: 2px solid #d6d6d6;
+    background-color: #f7f7f7;
+    border-radius: 4px;
+    font-size: 26px;
+    color: #d6d6d6;
+    padding: 3px;
+    margin-left: 8px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    .hide-small{
+      display: none;
+    }
+  }
+
+  .slowpayer{
+    padding-top: 3px;
+    padding-left: 7px;
+  }
+  .avatar {
+    width: 24px;
+    border-radius: 50%;
+  }
+
+  .inline {
+    display: inline;
+  }
+
+  .cancel-ico{
+    color: #F44336;
+    position: absolute;
+    padding-top:16px;
+  }
+
+  .cancel-ico:hover{
+    color: #d0291d;
+  }
+
+  .on-behalf-of-select{
+    padding-top: 4px;
+  }
+
+  .warn-ico {
+    color: #ffbf50;
+    font-size: 22px;
+    padding-left: 5px;
+    padding-top: 3px;
+  }
+
+  .warn-text {
+    margin-top: -24px;
+    padding-left: 30px;
+    padding-bottom: 3px;
+    padding-right: 6px;
+    font-weight: bold;
+    color: #ca4f41;
+  }
+
+  .warn {
+    border-radius: 7px;
+    margin-bottom: 10px;
+    background-color: rgb(250, 232, 210);
+    border: 2px solid #ffbf50;
+    text-align: left;
+  }

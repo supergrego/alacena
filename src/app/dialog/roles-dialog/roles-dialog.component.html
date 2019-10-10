@@ -1,0 +1,28 @@
+<div>
+    <h2 mat-dialog-title>ROLES</h2>
+    <mat-dialog-content class="content">
+      <i [ngClass]="['material-icons ico-' + (data.roles.admin ? 'ok' : 'cancel')]">account_box</i>
+      <mat-slide-toggle [disabled]="disableAdmin" [checked]="data.roles.admin" (toggleChange)="adminChange()">Administrador</mat-slide-toggle>
+      <br/>
+      <i [ngClass]="['material-icons ico-' + (data.roles.caller ? 'ok' : 'cancel')]">contact_phone</i>
+      <mat-slide-toggle [checked]="data.roles.caller" (toggleChange)="callerChange()">Realizar pedido</mat-slide-toggle>
+      <br/>
+      <i [ngClass]="['material-icons ico-' + (data.roles.accountant ? 'ok' : 'cancel')]">account_balance</i>
+      <mat-slide-toggle [checked]="data.roles.accountant" (toggleChange)="acountantChange()">Administrar food-coin</mat-slide-toggle>
+      <br/>
+      <mat-radio-group [value]="firstFloor" (change)="floorChanged($event)">
+          <mat-radio-button labelPosition="before" value="1">
+            <i [ngClass]="['material-icons ico-' + (data.roles.firstFloor ? 'ok' : 'cancel')]">looks_ones</i>
+          </mat-radio-button>
+          <br/>
+          <mat-radio-button labelPosition="before" value="4">
+              <i [ngClass]="['material-icons ico-' + (!data.roles.firstFloor ? 'ok' : 'cancel')]">looks_4</i>
+          </mat-radio-button>
+        </mat-radio-group>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-raised-button color="primary" (click)="onCloseSave()">Guardar</button>
+      <button mat-raised-button color="primary" (click)="onCloseExit()">Salir</button>
+    </mat-dialog-actions>
+  </div>
+  

@@ -1,0 +1,10 @@
+.content{
+    height: 90px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  button {
+    line-height: 25px;
+    padding: 0 10px;
+    min-width: 0px;
+  }

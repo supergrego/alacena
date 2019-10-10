@@ -1,0 +1,20 @@
+#icon {
+    float: left;
+}
+
+.ok {
+    color: #00ff00;
+}
+
+.err {
+    color: #ff6666;
+}
+
+.text {
+    float: left;
+    padding-top: 3px;
+    padding-left: 6px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}

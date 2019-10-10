@@ -1,0 +1,11 @@
+<div>
+    <h2 mat-dialog-title>ELIMINAR PEDIDO</h2>
+    <mat-dialog-content class="content">
+      ¿Está seguro de que desea eliminar el pedido: {{description}}?.
+      <span *ngIf=data.order.confirmed> Se reintegrará el importe cobrado.</span>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-raised-button color="primary" (click)="onCloseConfirm()">Aceptar</button>
+      <button mat-raised-button color="primary" (click)="onCloseExit()">Cancelar</button>
+    </mat-dialog-actions>
+  </div>

@@ -1,0 +1,32 @@
+{
+  "indexes": [
+    {
+      "collectionId": "plates",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "combo",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "garrison_type",
+          "mode": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "logs",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "user",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "mode": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}

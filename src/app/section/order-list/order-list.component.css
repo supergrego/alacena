@@ -1,0 +1,202 @@
+
+  .example-header-image {
+    background-color: #2da33d;
+    /*background-size: cover;*/
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .card-title{
+    color:#777777;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .avatar {
+    position: absolute;
+    margin-top: -5px;
+    width: 26px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .callerPhoto {
+    margin-top: -2px;
+    width: 42px;
+    border-radius: 50%;
+  }
+  .day-number {
+    width: 40px;
+    padding-top: 6px;
+  }
+
+  .ico-ok {
+    font-size: 20px;
+    color: #2da33d;
+  }
+
+  .floor {
+    width: 17.5px;
+  }
+
+  .ico-first {
+    font-size: 20px;
+    position: absolute;
+    color: #2d8da3;
+  }
+
+  .ico-cancel{
+    font-size: 20px;
+    color: #fdadad;
+  }
+
+  .ico-moroso{
+    font-size: 20px;
+    color: #f44336;
+  }
+
+  .row-confirmed{
+    background-color: #d3f2d6 !important;
+    transition: 0.3s;
+  }
+
+  .row-confirmed:hover{
+    background-color: #b7e6bc !important;
+  }
+
+  .btn-ico-on{
+    border: 2px solid #3f51b5;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #3f51b5;
+    cursor: pointer;
+    margin-right: 3px;
+  }
+
+  .btn-ico-on:hover {
+    color: #3251ff;
+    border-color: #3251ff;
+    background-color: #cee8f7;
+  }
+
+  .btn-ico-off{
+    border: 2px solid #d6d6d6;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #d6d6d6;
+    margin-right: 3px;
+  }
+
+  .price-box{
+    display: inline;
+    margin-left: 10px;
+    border: 2px solid #ccf3ff;
+    background-color: #edfbff;
+    border-radius: 4px;
+    padding: 8px;
+  }
+
+  .hola {
+    width: 100%;
+    padding: 15px 10px 0px 10px;
+  }
+
+  .hola th {
+    border-collapse: collapse;
+    border-radius: 5px;
+    background-color: #aad4f1;
+    color: white;
+    text-align: left;
+    padding-top: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 3px;
+  }
+  .hola td {
+    border-collapse: collapse;
+    border-radius: 5px;
+    text-align: left;
+    padding-top: 3px;
+    padding-left: 8px;
+    padding-bottom: 3px;
+  }
+  
+  .hola tr {
+    background-color: #f6f6f6;
+    transition: 0.3s;
+  }
+
+  .hola tr:hover {
+    background-color: #e7effd;
+  }
+
+  .display-name {
+    padding-left: 30px;
+  }
+
+  @media only screen and (max-width: 550px) {
+	
+    /* Force table to not be like tables anymore */
+    .hola table, 
+    .hola thead, 
+    .hola tbody, 
+    .hola td, 
+    .hola tr { 
+      display: block;
+    }    
+
+    .hola th {
+      display: none;
+    }
+   
+    /* Hide table headers (but not display: none;, for accessibility) */
+    .hola thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+   
+    .hola tr { /*border: 1px solid #ccc ;*/
+      border: 2px solid #ccf3ff;
+      border-radius: 7px;
+      background-color: #e5fbffcc;
+      padding-top: 3px; 
+    }
+   
+    .hola td { 
+      /* Behave  like a "row" */
+      border: none;
+      /*border-bottom: 1px solid #eee;*/ 
+      position: relative;
+      padding-left: 90px; 
+      white-space: normal;
+      text-align:left;
+      background-color: inherit;
+    }
+   
+    .hola td:before { 
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%; 
+      padding-right: 10px; 
+      white-space: nowrap;
+      text-align:left;
+      font-weight: bold;
+    }
+   
+    /*
+    Label the data
+    */
+    .hola td:before {
+      content: attr(data-title);
+    }
+  }
+
+  .margl{
+    margin-left: 26px;
+  }

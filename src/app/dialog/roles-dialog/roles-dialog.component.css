@@ -1,0 +1,19 @@
+.ico-ok {
+    color: #2da33d;
+    width: 24px;
+  }
+  
+  .ico-cancel{
+    color: #fdadad;
+    width: 24px;
+  }
+  
+  .content{
+    height: 149px;
+  }
+
+  button {
+    line-height: 25px;
+    padding: 0 10px;
+    min-width: 0px;
+  }

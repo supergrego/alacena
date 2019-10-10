@@ -1,0 +1,26 @@
+<div>
+  <h2 mat-dialog-title>LOG</h2>
+  <mat-dialog-content class="content">
+    <table cellpadding="0" cellspacing="0">
+        <thead style="text-align: left">
+          <th>Fecha</th>
+          <th style="padding-left: 10px">Concepto</th>
+          <th style="text-align: right; padding-left: 10px;">Importe</th>
+          <th style="text-align: right; padding-left: 10px;">Saldo</th>
+          <th style="padding-left: 10px">Realizado por</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let log of data async" [class]="log.balance < 0 ? 'reintegro' : ''">
+            <td> {{log.dateString}} </td>
+            <td style="padding-left: 10px"> {{log.concept}} </td>
+            <td style="text-align: right; padding-left: 10px; white-space: nowrap;"> {{log.amount.toFixed(2)}} €</td>
+            <td style="text-align: right; padding-left: 10px; white-space: nowrap;"> {{log.balance.toFixed(2)}} €</td>
+            <td style="padding-left: 10px"> {{log.resName}} </td>
+          </tr>
+        </tbody>
+    </table>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onCloseExit()">Cerrar</button>
+  </mat-dialog-actions>
+</div>

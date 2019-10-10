@@ -1,0 +1,9 @@
+.content{
+    height: 160px;
+  }
+
+  button {
+    line-height: 25px;
+    padding: 0 10px;
+    min-width: 0px;
+  }
